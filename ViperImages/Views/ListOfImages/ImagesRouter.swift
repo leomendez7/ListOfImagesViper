@@ -13,7 +13,9 @@ class ImagesRouter: PresenterToRouterImagesProtocol {
     
     // MARK: Static methods
     static func createImagesListViewController() -> UIViewController {
-        let viewController = ImagesViewController()
+        let storyboard = UIStoryboard(name: "Images", bundle: nil)
+        let navigationController = storyboard.instantiateViewController(withIdentifier: "Images") as! UINavigationController
+        let viewController = navigationController.topViewController as! ImagesViewController
         let presenter: ViewToPresenterImagesProtocol & InteractorToPresenterImagesProtocol = ImagesPresenter()
         viewController.presenter = presenter
         viewController.presenter?.router = ImagesRouter()

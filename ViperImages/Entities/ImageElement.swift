@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ImageElement: Codable {
+public struct ImageElement: Codable {
     
-    let albumID, id: Int
-    let title: String
-    let url, thumbnailURL: String
+    public let albumID, id: Int
+    public let title: String
+    public let url, thumbnailURL: String
     
     init(albumID: Int, id: Int, title: String, url: String, thumbnailURL: String) {
         self.albumID = albumID

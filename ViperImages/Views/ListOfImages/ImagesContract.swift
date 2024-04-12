@@ -11,6 +11,7 @@ import Foundation
 // MARK: View Output (Presenter -> View)
 protocol PresenterToViewImagesProtocol {
     func update(images: [ImageElement])
+    func updateDelete(response: Bool)
 }
 
 // MARK: View Input (View -> Presenter)
@@ -19,6 +20,7 @@ protocol ViewToPresenterImagesProtocol {
     var interactor: PresenterToInteractorImagesProtocol? { get set }
     var router: PresenterToRouterImagesProtocol? { get set }
     func onViewAppear()
+    func deleteImage(imageId: String)
 }
 
 
@@ -26,12 +28,14 @@ protocol ViewToPresenterImagesProtocol {
 protocol PresenterToInteractorImagesProtocol {
     var presenter: InteractorToPresenterImagesProtocol? { get set }
     func fetchImages(completion: @escaping ([ImageElement], Error?) -> Void)
+    func deleteImage(imageId: String, completion: @escaping (Bool, Error?) -> Void)
 }
 
 
 // MARK: Interactor Output (Interactor -> Presenter)
 protocol InteractorToPresenterImagesProtocol {
     func onViewAppear()
+    func deleteImage(imageId: String)
 }
 
 
