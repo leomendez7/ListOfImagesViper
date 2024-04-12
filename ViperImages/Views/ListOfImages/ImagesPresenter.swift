@@ -25,4 +25,10 @@ extension ImagesPresenter: InteractorToPresenterImagesProtocol {
         }
     }
     
+    public func deleteImage(imageId: String) {
+        interactor?.deleteImage(imageId: imageId, completion: { response, error in
+            self.view?.updateDelete(response: response)
+        })
+    }
+    
 }
